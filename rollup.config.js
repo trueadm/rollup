@@ -25,7 +25,11 @@ export default {
 		json(),
 
 		buble({
-			include: [ 'src/**', 'node_modules/acorn/**' ],
+			include: [
+				'src/**',
+				'node_modules/acorn/**',
+				'node_modules/acorn-jsx/**',
+			],
 			target: {
 				node: '0.12'
 			}

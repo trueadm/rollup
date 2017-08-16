@@ -19,6 +19,7 @@ import ForOfStatement from './ForOfStatement.js';
 import FunctionDeclaration from './FunctionDeclaration.js';
 import FunctionExpression from './FunctionExpression.js';
 import Identifier from './Identifier.js';
+import JSXIdentifier from './JSXIdentifier.js';
 import IfStatement from './IfStatement.js';
 import ImportDeclaration from './ImportDeclaration.js';
 import Literal from './Literal.js';
@@ -60,6 +61,7 @@ export default {
 	FunctionDeclaration,
 	FunctionExpression,
 	Identifier,
+	JSXIdentifier,
 	IfStatement,
 	ImportDeclaration,
 	Literal,

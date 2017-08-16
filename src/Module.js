@@ -1,4 +1,4 @@
-import { parse } from 'acorn';
+import acorn from 'acorn-jsx';
 import MagicString from 'magic-string';
 import { locate } from 'locate-character';
 import { timeStart, timeEnd } from './utils/flushTime.js';
@@ -17,10 +17,11 @@ import ModuleScope from './ast/scopes/ModuleScope.js';
 
 function tryParse ( module, acornOptions ) {
 	try {
-		return parse( module.code, assign( {
+		return acorn.parse( module.code, assign( {
 			ecmaVersion: 8,
 			sourceType: 'module',
 			onComment: ( block, text, start, end ) => module.comments.push( { block, text, start, end } ),
+			plugins: { jsx: true },
 			preserveParens: false
 		}, acornOptions ) );
 	} catch ( err ) {
