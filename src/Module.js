@@ -1,4 +1,6 @@
-import acorn from 'acorn-jsx';
+const acorn = require('acorn');
+const injectAcornJsx = require('acorn-jsx/inject');
+const injectAcornObjectRestSpread = require('acorn-object-rest-spread/inject');
 import MagicString from 'magic-string';
 import { locate } from 'locate-character';
 import { timeStart, timeEnd } from './utils/flushTime.js';
@@ -15,13 +17,16 @@ import enhance from './ast/enhance.js';
 import clone from './ast/clone.js';
 import ModuleScope from './ast/scopes/ModuleScope.js';
 
+injectAcornJsx(acorn);
+injectAcornObjectRestSpread(acorn);
+
 function tryParse ( module, acornOptions ) {
 	try {
 		return acorn.parse( module.code, assign( {
 			ecmaVersion: 8,
 			sourceType: 'module',
 			onComment: ( block, text, start, end ) => module.comments.push( { block, text, start, end } ),
-			plugins: { jsx: true },
+			plugins: { jsx: true, objectRestSpread: true },
 			preserveParens: false
 		}, acornOptions ) );
 	} catch ( err ) {

@@ -87,6 +87,7 @@
     "README.md"
   ],
   "dependencies": {
+    "acorn-object-rest-spread": "^1.1.0",
     "estree-walker": "^0.5.0"
   }
 }
